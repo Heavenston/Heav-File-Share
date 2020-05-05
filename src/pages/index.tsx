@@ -1,6 +1,6 @@
 import { FunctionComponent, useState, useCallback } from "react";
 import Icon from '@mdi/react';
-import { mdiFax, mdiFile, mdiFileDocument, mdiFileCode, mdiFileCog, mdiFilePdf, mdiFileImage, mdiMovie } from '@mdi/js';
+import { mdiFax, mdiUpload, mdiUploadLock, mdiFile, mdiFileDocument, mdiFileCode, mdiFileCog, mdiFilePdf, mdiFileImage, mdiMovie } from '@mdi/js';
 import {useDropzone} from 'react-dropzone'
 
 import Potentiometer from "~/components/potentiometer";
@@ -96,6 +96,7 @@ const FileSend: FunctionComponent = () => {
 
 const Index: FunctionComponent = () => {
   const [sendingType, setSendingType] = useState(0);
+  const [canSend, setCanSend] = useState(false);
 
   const onSendingTypeChange = useCallback((v: number) => {
     setSendingType(v);
@@ -150,7 +151,15 @@ const Index: FunctionComponent = () => {
             </div>
           </div>
         </section>
-        <section className={`${elsClasses} w-32`}>
+        <section className={`${elsClasses} w-40 flex justify-center items-center`}>
+          
+          <div className={`
+          w-32 h-32 ${canSend ? "bg-primary text-white" : "bg-gray-600 text-gray-400"} rounded
+          flex justify-center items-center
+          `}>
+            <Icon className="w-12" path={canSend ? mdiUpload : mdiUploadLock} />
+          </div>
+
         </section>
       </div>
     </article>
