@@ -8,9 +8,9 @@ module.exports = {
         "84": "21rem",
         "96": "24rem",
       },
-      fontFamily: {
-        body: ['Source Code Pro', 'monospace'],
-      },
+    },
+    fontFamily: {
+      body: ['Source Code Pro', 'monospace'],
     },
   },
   variants: ['responsive', 'group-hover', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
