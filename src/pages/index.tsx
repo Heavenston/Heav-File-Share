@@ -1,6 +1,11 @@
-import { FunctionComponent, useState, useCallback } from "react";
+import { FunctionComponent, useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Icon from '@mdi/react';
-import { mdiFax, mdiUpload, mdiUploadLock, mdiFile, mdiFileDocument, mdiFileCode, mdiFileCog, mdiFilePdf, mdiFileImage, mdiMovie } from '@mdi/js';
+import {
+  mdiFax, mdiUpload, mdiUploadLock, mdiFile,
+  mdiFileDocument, mdiFileCode, mdiFileCog,
+  mdiFilePdf, mdiFileImage, mdiMovie
+} from '@mdi/js';
 import {useDropzone} from 'react-dropzone'
 
 import Potentiometer from "~/components/potentiometer";
@@ -12,7 +17,9 @@ const LinkSend: FunctionComponent = () => {
   </section>;
 }
 
-const FileSend: FunctionComponent = () => {
+const FileSend: FunctionComponent<{
+  onChange?: (v: boolean) => any,
+}> = ({onChange}) => {
   const [isHovering, setIsHovering] = useState(false);
   const [file, setFile] = useState(null as any);
 
@@ -31,6 +38,10 @@ const FileSend: FunctionComponent = () => {
     onDrop, onDragEnter, onDragLeave,
     multiple: false,
   });
+  
+  useEffect(() => {
+    onChange && onChange(!!file);
+  }, [onChange, file]);
 
   const getIconFromExension = (ext: string) => {
     const exts = {
@@ -97,9 +108,19 @@ const FileSend: FunctionComponent = () => {
 const Index: FunctionComponent = () => {
   const [sendingType, setSendingType] = useState(0);
   const [canSend, setCanSend] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSendingTypeChange = useCallback((v: number) => {
     setSendingType(v);
+    setCanSend(false);
+  }, []);
+
+  const send = useCallback(() => {
+    setIsLoading(true);
+    setCanSend(false);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }, []);
 
   return (
@@ -107,6 +128,11 @@ const Index: FunctionComponent = () => {
     className="flex shadow-lg flex-col text-gray-200
     bg-gray-900 pt-1 pl-1 text-lg rounded-lg"
     >
+      {isLoading && createPortal(<div className="absolute inset-0 z-50 flex justify-center items-center">
+      <div className="absolute inset-0 bg-black opacity-75" />
+      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+      </div>, document.body)}
+
       <div className="flex">
 
         <section className={`${elsClasses} h-64 w-64`}>
@@ -135,7 +161,7 @@ const Index: FunctionComponent = () => {
         sendingType ?
         <LinkSend/>
         :
-        <FileSend/>
+        <FileSend onChange={setCanSend}/>
         }
 
       </div>
@@ -154,9 +180,11 @@ const Index: FunctionComponent = () => {
         <section className={`${elsClasses} w-40 flex justify-center items-center`}>
           
           <div className={`
-          w-32 h-32 ${canSend ? "bg-primary text-white" : "bg-gray-600 text-gray-400"} rounded
+          transition-all duration-100
+          w-32 h-32 ${canSend ? "bg-primary text-white hover:bg-primary-600 cursor-pointer" : "bg-gray-600 text-gray-400"} rounded
           flex justify-center items-center
-          `}>
+          `}
+          onClick={canSend ? send : undefined}>
             <Icon className="w-12" path={canSend ? mdiUpload : mdiUploadLock} />
           </div>
 
