@@ -8,12 +8,9 @@ const Application = () => <BrowserRouter>
   <App/>
 </BrowserRouter>;
 
-let el = document.createElement("div");
-el.id = "app";
-el.classList.add("min-h-screen");
-document.body.append(el);
+let root = document.getElementById("root");
 
-ReactDOM.render(<Application/>, el);
+ReactDOM.render(<Application/>, root);
 
 // @ts-ignore
 if (module && module.hot) {
