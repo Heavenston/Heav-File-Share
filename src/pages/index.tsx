@@ -46,7 +46,7 @@ const Index: FunctionComponent = () => {
             </div>
           </div>
         </section>
-        <section className={`${elsClasses} w-64`}>
+        <section className={`${elsClasses} w-32`}>
         </section>
       </div>
     </article>
