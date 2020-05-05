@@ -72,7 +72,8 @@ const FileSend: FunctionComponent = () => {
   return <section
   className={`
   ${elsClasses} w-64 flex justify-center
-  items-center cursor-pointer hover:shadow-inner hover:bg-gray-600
+  transition-color duration-100
+  items-center cursor-pointer hover:shadow-inner hover:bg-gray-600 hover:text-primary
   outline-none ${isHovering ? `bg-dashed` : ``}
   `}
   {...getRootProps()}
@@ -113,6 +114,7 @@ const Index: FunctionComponent = () => {
           font-bold text-2xl bg-gray-700
           inline-block px-4 py-1 align-middle leading-10
           -ml-10 mt-5 rounded text-white shadow
+          hover:bg-primary transition-all duration-100
           "
           >
             Faxer <Icon className="inline-block h-10" path={mdiFax} />

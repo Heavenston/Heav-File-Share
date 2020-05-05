@@ -15,3 +15,8 @@
     theme("colors.gray.500") 20px
   );
 }
+
+::selection {
+  background-color: theme("colors.primary.500");
+  color: white;
+}

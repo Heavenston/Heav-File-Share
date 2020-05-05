@@ -33,9 +33,9 @@ const Potentiometer: FunctionComponent<{
       className="
       h-24 w-24 bg-gray-400
       rounded-full
-      border-solid border-gray-900 border-2
+      border-solid border-gray-900 border-2 hover:bg-primary
       shadow-md flex justify-center items-center
-      cursor-pointer transition-transform duration-200 ease-in-out
+      cursor-pointer transition-all duration-200 ease-in-out
       "
       onClick={onClick}
       style={style}
@@ -49,12 +49,12 @@ const Potentiometer: FunctionComponent<{
     flex flex-col justify-between py-3 px-5 items-stretch
     ">
       <div className="flex items-center">
-        <span className={`inline-block h-3 w-3 mr-4 transition-color duration-200 ease-in-out rounded-full ${state === 0 ? "bg-green-500" : "bg-gray-700"}`}/>
+        <span className={`inline-block h-3 w-3 mr-4 transition-color duration-200 ease-in-out rounded-full ${state === 0 ? "bg-primary-500" : "bg-gray-700"}`}/>
         <span className="flex-grow"/>
         <span>{states[0]}</span>
       </div>
       <div className="flex items-center">
-        <span className={`inline-block h-3 w-3 mr-4 transition-color duration-200 ease-in-out rounded-full ${state === 1 ? "bg-green-500" : "bg-gray-700"}`}/>
+        <span className={`inline-block h-3 w-3 mr-4 transition-color duration-200 ease-in-out rounded-full ${state === 1 ? "bg-primary-500" : "bg-gray-700"}`}/>
         <span className="flex-grow"/>
         <span>{states[1]}</span>
       </div>
