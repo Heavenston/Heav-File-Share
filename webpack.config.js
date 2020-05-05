@@ -84,9 +84,9 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src/index.html"),
       chunks: ["main"],
       inject: "head",
-      title: "BASE-WEBPACK",
       scriptLoading: "defer",
     }),
     ...isDev
