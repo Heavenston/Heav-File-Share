@@ -9,9 +9,9 @@
 .bg-dashed {
   background: repeating-linear-gradient(
     45deg,
-    theme("colors.black"),
-    theme("colors.black") 10px,
-    theme("colors.dark") 10px,
-    theme("colors.dark") 20px
+    theme("colors.gray.700"),
+    theme("colors.gray.700") 10px,
+    theme("colors.gray.500") 10px,
+    theme("colors.gray.500") 20px
   );
 }
