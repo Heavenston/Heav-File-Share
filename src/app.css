@@ -5,3 +5,13 @@
 @import "tailwindcss/utilities";
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
+
+.bg-dashed {
+  background: repeating-linear-gradient(
+    45deg,
+    theme("colors.black"),
+    theme("colors.black") 10px,
+    theme("colors.dark") 10px,
+    theme("colors.dark") 20px
+  );
+}

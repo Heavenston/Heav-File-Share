@@ -11,8 +11,30 @@ module.exports = {
       minHeight: theme => theme("spacing"),
       minWidth: theme => theme("spacing"),
       colors: {
-        dark: "#2C2F33",
-        black: "#23272A",
+        gray: {
+          100: '#E9E9E9',
+          200: '#C8C8C8',
+          300: '#A7A7A7',
+          400: '#646464',
+          500: '#222222',
+          "default": '#222222',
+          600: '#1F1F1F',
+          700: '#141414',
+          800: '#0F0F0F',
+          900: '#0A0A0A',
+        },
+        primary: {
+          100: '#E6F8FE',
+          200: '#BFEEFB',
+          300: '#99E4F9',
+          400: '#4DCFF5',
+          500: '#00BBF0',
+          default: '#00BBF0',
+          600: '#00A8D8',
+          700: '#007090',
+          800: '#00546C',
+          900: '#003848',
+        },
       }
     },
     fontFamily: {
