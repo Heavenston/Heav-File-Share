@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const isDev = (process.env.NODE_ENV || "").trim() === "development";
 
@@ -67,7 +68,7 @@ module.exports = {
   devtool: isDev ? "source-map" : "none",
 
   devServer: {
-    contentBase: false,
+    contentBase: path.resolve(__dirname, "public"),
     port: 1234,
     hot: true,
     historyApiFallback: true,
@@ -92,6 +93,10 @@ module.exports = {
      ? [
       new webpack.HotModuleReplacementPlugin(),
     ]
-     : []
+     : [
+       new CopyPlugin([{
+         from: "public"
+       }]),
+     ],
   ],
 };
