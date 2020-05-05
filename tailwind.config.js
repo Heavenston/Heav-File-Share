@@ -38,9 +38,6 @@ module.exports = {
         background: theme => theme("colors.gray.500")
       }
     },
-    fontFamily: {
-      body: () => theme("fontFamily.sans"),
-    },
   },
   variants: ['responsive', 'group-hover', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
   plugins: [],
