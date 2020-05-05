@@ -1,7 +1,7 @@
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-import "./tailwind.css";
+import "./app.css";
 import App from "./app";
 
 const Application = () => <BrowserRouter>
