@@ -1,6 +1,14 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: theme => theme("spacing"),
+      maxWidth: theme => theme("spacing"),
+      "spacing": {
+        "72": "18rem",
+        "84": "21rem",
+        "96": "24rem",
+      }
+    },
   },
   variants: ['responsive', 'group-hover', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
   plugins: [],
