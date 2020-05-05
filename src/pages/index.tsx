@@ -13,12 +13,15 @@ import Potentiometer from "~/components/potentiometer";
 const elsClasses = "bg-gray rounded mb-1 mr-1";
 
 const linkRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
-const LinkSend: FunctionComponent = () => {
+const LinkSend: FunctionComponent<{
+  onChange?: (v: boolean) => any,
+}> = ({onChange}) => {
   const [showError, setShowError] = useState(true);
 
-  const onChange = useCallback((e) => {
+  const onInputChange = useCallback((e) => {
     const value = e.target.value;
     setShowError(!linkRegex.test(value));
+    onChange && onChange(linkRegex.test(value));
   }, []);
 
   return <section className={`${elsClasses} w-64 relative overflow-hidden`}>
@@ -40,7 +43,7 @@ const LinkSend: FunctionComponent = () => {
     text-white outline-none text-center
     font-semibold
     "
-    onChange={onChange}/>
+    onChange={onInputChange}/>
   </section>;
 }
 
