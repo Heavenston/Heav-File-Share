@@ -17,7 +17,7 @@ module.exports = {
           300: '#A7A7A7',
           400: '#646464',
           500: '#222222',
-          "default": '#222222',
+          default: '#222222',
           600: '#1F1F1F',
           700: '#141414',
           800: '#0F0F0F',
@@ -39,7 +39,7 @@ module.exports = {
       }
     },
     fontFamily: {
-      body: ['Source Code Pro', 'monospace'],
+      body: () => theme("fontFamily.sans"),
     },
   },
   variants: ['responsive', 'group-hover', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
