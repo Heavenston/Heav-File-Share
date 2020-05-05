@@ -8,7 +8,10 @@ const elsClasses = "bg-gray rounded mb-1 mr-1";
 
 const Index: FunctionComponent = () => {
   return (
-    <article className="flex flex-col text-gray-200 bg-gray-900 pt-1 pl-1 text-lg rounded-lg">
+    <article
+    className="flex shadow-lg flex-col text-gray-200
+    bg-gray-900 pt-1 pl-1 text-lg rounded-lg"
+    >
       <div className="flex">
 
         <section className={`${elsClasses} h-64 w-64`}>
