@@ -24,7 +24,7 @@ const LinkSend: FunctionComponent<{
     onChange && onChange(linkRegex.test(value));
   }, []);
 
-  return <section className={`${elsClasses} w-64 relative overflow-hidden`}>
+  return <section className={`${elsClasses} w-64 relative overflow-hidden p-3`}>
     <div
     className={`
     absolute top-0 left-0 right-0 text-center
