@@ -35,6 +35,7 @@ module.exports = {
           800: '#00546C',
           900: '#003848',
         },
+        background: theme => theme("colors.gray.500")
       }
     },
     fontFamily: {
