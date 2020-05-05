@@ -1,12 +1,20 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState, useCallback } from "react";
 import Icon from '@mdi/react';
 import { mdiFax } from '@mdi/js';
 
 import Potentiometer from "~/components/potentiometer";
+import File from "~/inputs/file";
+import Link from "~/inputs/link";
 
 const elsClasses = "bg-gray rounded mb-1 mr-1";
 
 const Index: FunctionComponent = () => {
+  const [sendingType, setSendingType] = useState(0);
+
+  const onSendingTypeChange = useCallback((v: number) => {
+    setSendingType(v);
+  }, []);
+
   return (
     <article
     className="flex shadow-lg flex-col text-gray-200
@@ -27,13 +35,18 @@ const Index: FunctionComponent = () => {
         </section>
 
         <div className="flex flex-col">
-          <Potentiometer states={["Fichier", "Lien"]} />
+          <Potentiometer 
+          states={["Fichier", "Lien"]} 
+          value={sendingType} 
+          onChange={onSendingTypeChange} 
+          />
           <section className={`${elsClasses} flex-grow`}></section>
         </div>
 
-        <section className={`${elsClasses} flex-grow w-96`}>
+        <section className={`${elsClasses} flex-grow w-96 flex items-center justify-center`}>
+          {sendingType ? <File/> : <Link/>}
         </section>
-        
+
       </div>
 
       <div className="flex">
