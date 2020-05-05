@@ -12,8 +12,35 @@ import Potentiometer from "~/components/potentiometer";
 
 const elsClasses = "bg-gray rounded mb-1 mr-1";
 
+const linkRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 const LinkSend: FunctionComponent = () => {
-  return <section className={`${elsClasses} w-64`}>
+  const [showError, setShowError] = useState(true);
+
+  const onChange = useCallback((e) => {
+    const value = e.target.value;
+    setShowError(!linkRegex.test(value));
+  }, []);
+
+  return <section className={`${elsClasses} w-64 relative overflow-hidden`}>
+    <div
+    className={`
+    absolute top-0 left-0 right-0 text-center
+    bg-red-600 text-white overflow-hidden
+    transition-all duration-100
+    ${showError ? "h-7" : "h-0"}
+    `}
+    >
+      Lien invalide
+    </div>
+    <input
+    autoCorrect="false" spellCheck="false"
+    placeholder="Coller le lien ici"
+    className="
+    h-full w-full bg-transparent
+    text-white outline-none text-center
+    font-semibold
+    "
+    onChange={onChange}/>
   </section>;
 }
 
