@@ -43,7 +43,12 @@ module.exports = {
               hmr: isDev,
             },
           },
-          "cache-loader",
+          {
+            loader: "cache-loader",
+            options: {
+              cacheDirectory: path.join(__dirname, ".cache/css")
+            }
+          },
           {
             loader: "css-loader",
             options: {
