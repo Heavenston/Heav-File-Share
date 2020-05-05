@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "strict": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "removeComments": false,
+    "target": "es6",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
+  },
+  "include": [
+    "src/**/*",
+  ],
+}

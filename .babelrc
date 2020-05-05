@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "react-hot-loader/babel",
+    ["auto-import", {
+      "declarations": [
+        { "default": "React", "path": "react" }
+      ]
+    }],
+    "@babel/plugin-transform-react-jsx"
+  ]
+}
