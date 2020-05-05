@@ -1,15 +1,15 @@
 module.exports = {
   theme: {
     extend: {
-      maxHeight: theme => theme("spacing"),
-      maxWidth: theme => theme("spacing"),
-      minHeight: theme => theme("spacing"),
-      mibWidth: theme => theme("spacing"),
       "spacing": {
         "72": "18rem",
         "84": "21rem",
         "96": "24rem",
       },
+      maxHeight: theme => theme("spacing"),
+      maxWidth: theme => theme("spacing"),
+      minHeight: theme => theme("spacing"),
+      minWidth: theme => theme("spacing"),
       colors: {
         dark: "#2C2F33",
         black: "#23272A",
