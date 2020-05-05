@@ -33,6 +33,7 @@ const Index: FunctionComponent = () => {
 
         <section className={`${elsClasses} flex-grow w-96`}>
         </section>
+        
       </div>
 
       <div className="flex">
