@@ -11,8 +11,13 @@ const Index = () => {
         <img src={`/emojies/${stateImg}.png`} className="ml-2 w-6 inline-block" />
       </span>
     </div>
-    <div className="flex flex-col items-center">
-      
+    <div className="flex flex-row justify-center">
+      <div className="mr-10">
+        <img src="/emojies/file_folders.png" alt="file folder" />
+      </div>
+      <div>
+        <img src="/emojies/ticket.png" alt="ticket" />
+      </div>
     </div>
   </div>
 };
