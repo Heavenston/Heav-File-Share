@@ -47,3 +47,6 @@ typings/
 
 # Firebase
 .firebaserc
+
+# VSCode
+.vscode
