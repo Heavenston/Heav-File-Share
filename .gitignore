@@ -43,3 +43,6 @@ typings/
 # Compilation outputs
 **/dist/
 **/app/
+
+# Firebase
+.firebaserc
