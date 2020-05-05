@@ -10,7 +10,6 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 
 module.exports = {
   plugins: [
-    require("postcss-gap-polyfill"),
     require("postcss-import"),
     require('tailwindcss')(require("./tailwind.config")),
     require("postcss-nesting"),

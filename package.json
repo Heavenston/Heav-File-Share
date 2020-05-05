@@ -21,7 +21,6 @@
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.4",
     "mini-css-extract-plugin": "^0.9.0",
-    "postcss-gap-polyfill": "^3.0.2",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-nesting": "^7.0.1",
