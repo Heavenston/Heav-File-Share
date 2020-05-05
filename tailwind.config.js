@@ -8,6 +8,10 @@ module.exports = {
         "84": "21rem",
         "96": "24rem",
       },
+      colors: {
+        dark: "#2C2F33",
+        black: "#23272A",
+      }
     },
     fontFamily: {
       body: ['Source Code Pro', 'monospace'],

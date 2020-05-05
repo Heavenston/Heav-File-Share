@@ -3,6 +3,8 @@ const isProd = process.env.NODE_ENV === "production";
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./src/**/*.html",
   ],
 });
 
