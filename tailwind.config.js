@@ -36,7 +36,8 @@ module.exports = {
           900: '#003848',
         },
         background: theme => theme("colors.gray.500")
-      }
+      },
+      inset: theme => theme("spacing"),
     },
   },
   variants: ['responsive', 'group-hover', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
