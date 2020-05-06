@@ -161,6 +161,11 @@ const Index: FunctionComponent = () => {
     }, 2000);
   }, []);
 
+  const onReadyStateChange = useCallback((r: boolean) => {
+    setCanSend(r);
+    setOutputlink(null);
+  }, []);
+
   return (
     <article
     className="flex shadow-lg flex-col text-gray-200
@@ -202,9 +207,9 @@ const Index: FunctionComponent = () => {
         
         {
         sendingType ?
-        <LinkSend onChange={setCanSend}/>
+        <LinkSend onChange={onReadyStateChange}/>
         :
-        <FileSend onChange={setCanSend}/>
+        <FileSend onChange={onReadyStateChange}/>
         }
 
       </div>
