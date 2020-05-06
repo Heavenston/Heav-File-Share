@@ -15,14 +15,16 @@ const elsClasses = "bg-gray rounded mb-1 mr-1";
 const linkRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 const LinkSend: FunctionComponent<{
   onChange?: (v: boolean) => any,
-}> = ({onChange}) => {
+  onInput?: () => any,
+}> = ({onChange, onInput}) => {
   const [showError, setShowError] = useState(true);
 
   const onInputChange = useCallback((e) => {
     const value = e.target.value;
     setShowError(!linkRegex.test(value));
     onChange && onChange(linkRegex.test(value));
-  }, []);
+    onInput && onInput();
+  }, [onChange, onInput]);
 
   return <section className={`${elsClasses} w-64 relative overflow-hidden p-3`}>
     <div
@@ -49,7 +51,8 @@ const LinkSend: FunctionComponent<{
 
 const FileSend: FunctionComponent<{
   onChange?: (v: boolean) => any,
-}> = ({onChange}) => {
+  onInput?: () => any,
+}> = ({onChange, onInput}) => {
   const [isHovering, setIsHovering] = useState(false);
   const [file, setFile] = useState(null as any);
 
@@ -57,7 +60,8 @@ const FileSend: FunctionComponent<{
     setIsHovering(false);
     setFile(acceptedFiles[0]);
     console.log(acceptedFiles[0]);
-  }, []);
+    onInput && onInput();
+  }, [onInput]);
   const onDragEnter = useCallback(() => {
     setIsHovering(true);
   }, []);
