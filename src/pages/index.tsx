@@ -14,7 +14,7 @@ const elsClasses = "bg-gray rounded mb-1 mr-1";
 
 const linkRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 const LinkSend: FunctionComponent<{
-  onChange?: (v: boolean) => any,
+  onChange?: (isReady: boolean, fax?: any) => any,
   onInput?: () => any,
 }> = ({onChange, onInput}) => {
   const [showError, setShowError] = useState(true);
@@ -22,7 +22,9 @@ const LinkSend: FunctionComponent<{
   const onInputChange = useCallback((e) => {
     const value = e.target.value;
     setShowError(!linkRegex.test(value));
-    onChange && onChange(linkRegex.test(value));
+    onChange && onChange(linkRegex.test(value), linkRegex.test(value) ? {
+      link: value
+    } : undefined);
     onInput && onInput();
   }, [onChange, onInput]);
 
@@ -50,7 +52,7 @@ const LinkSend: FunctionComponent<{
 }
 
 const FileSend: FunctionComponent<{
-  onChange?: (v: boolean) => any,
+  onChange?: (isReady: boolean, fax: any) => any,
   onInput?: () => any,
 }> = ({onChange, onInput}) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -59,7 +61,6 @@ const FileSend: FunctionComponent<{
   const onDrop = useCallback(acceptedFiles => {
     setIsHovering(false);
     setFile(acceptedFiles[0]);
-    console.log(acceptedFiles[0]);
     onInput && onInput();
   }, [onInput]);
   const onDragEnter = useCallback(() => {
@@ -74,7 +75,9 @@ const FileSend: FunctionComponent<{
   });
   
   useEffect(() => {
-    onChange && onChange(!!file);
+    onChange && onChange(!!file, !!file ? {
+      file
+    } : undefined);
   }, [onChange, file]);
 
   const getIconFromExension = (ext: string) => {
@@ -145,6 +148,8 @@ const Index: FunctionComponent = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [outputLink, setOutputlink] = useState(null as null|string);
 
+  const [fax, setFax] = useState(null as any);
+
   const onSendingTypeChange = useCallback((v: number) => {
     setSendingType(v);
     setCanSend(false);
@@ -155,15 +160,17 @@ const Index: FunctionComponent = () => {
     setIsLoading(true);
     setCanSend(false);
     setOutputlink(null);
+    console.log(fax);
     setTimeout(() => {
       setIsLoading(false);
       setOutputlink("https://faxer.heav.fr/kdqldk");
     }, 2000);
-  }, []);
+  }, [fax]);
 
-  const onReadyStateChange = useCallback((r: boolean) => {
+  const onReadyStateChange = useCallback((r: boolean, fax: any) => {
     setCanSend(r);
     setOutputlink(null);
+    setFax(fax);
   }, []);
 
   return (
