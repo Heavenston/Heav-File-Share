@@ -123,7 +123,7 @@ const FileSend: FunctionComponent<{
       {file?
       <>
       <h1 className="font-bold text-xl">{file.name}</h1>
-      <Icon className="w-10 inline-block" path={getIconFromExension(file.name.split(".")[1])} />
+      <Icon className="w-10 inline-block" path={getIconFromExension(file.name.split(".").pop())} />
       </>
       : <>
       <h1 className="font-bold text-xl">Ajouter un fichier</h1>
