@@ -149,7 +149,7 @@ const Index: FunctionComponent = () => {
     setSendingType(v);
     setCanSend(false);
     setOutputlink(null);
-    }, []);
+  }, []);
 
   const send = useCallback(() => {
     setIsLoading(true);
