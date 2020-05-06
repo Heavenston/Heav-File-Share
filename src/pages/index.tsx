@@ -119,14 +119,14 @@ const FileSend: FunctionComponent<{
   `}
   {...getRootProps()}
   >
-    <div className="flex-grow-0 inline-block text-center p-2">
+    <div className="flex-grow-0 inline-block text-center overflow-hidden p-2">
       {file?
       <>
-      <h1 className="font-bold text-xl">{file.name}</h1>
+      <h1 className="font-bold text-xl truncate">{file.name}</h1>
       <Icon className="w-10 inline-block" path={getIconFromExension(file.name.split(".").pop())} />
       </>
       : <>
-      <h1 className="font-bold text-xl">Ajouter un fichier</h1>
+      <h1 className="font-bold text-xl truncate">Ajouter un fichier</h1>
       <Icon className="w-10 inline-block" path={mdiFile} />
       </>
       }
