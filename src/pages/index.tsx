@@ -150,9 +150,10 @@ const Index: FunctionComponent = () => {
   const send = useCallback(() => {
     setIsLoading(true);
     setCanSend(false);
+    setOutputlink(null);
     setTimeout(() => {
       setIsLoading(false);
-      setOutputlink("http://google.com");
+      setOutputlink("https://faxer.heav.fr/kdqldk");
     }, 2000);
   }, []);
 
