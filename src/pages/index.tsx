@@ -189,7 +189,7 @@ const Index: FunctionComponent = () => {
         
         {
         sendingType ?
-        <LinkSend/>
+        <LinkSend onChange={setCanSend}/>
         :
         <FileSend onChange={setCanSend}/>
         }
@@ -210,8 +210,8 @@ const Index: FunctionComponent = () => {
         <section className={`${elsClasses} w-40 flex justify-center items-center`}>
           
           <div className={`
-          transition-all duration-100
-          w-32 h-32 ${canSend ? "bg-primary text-white hover:bg-primary-600 cursor-pointer" : "bg-gray-600 text-gray-400"} rounded
+          transition-all duration-1000
+          w-32 h-32 ${canSend ? "glow bg-primary text-white hover:bg-primary-600 cursor-pointer" : "bg-gray-600 text-gray-400"} rounded
           flex justify-center items-center
           `}
           onClick={canSend ? send : undefined}>
