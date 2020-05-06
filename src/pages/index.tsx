@@ -43,7 +43,7 @@ const LinkSend: FunctionComponent<{
     className="
     h-full w-full bg-transparent
     text-white outline-none text-center
-    font-semibold
+    font-semibold truncate
     "
     onChange={onInputChange}/>
   </section>;
