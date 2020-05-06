@@ -139,17 +139,20 @@ const Index: FunctionComponent = () => {
   const [sendingType, setSendingType] = useState(0);
   const [canSend, setCanSend] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [outputLink, setOutputlink] = useState(null as null|string);
 
   const onSendingTypeChange = useCallback((v: number) => {
     setSendingType(v);
     setCanSend(false);
-  }, []);
+    setOutputlink(null);
+    }, []);
 
   const send = useCallback(() => {
     setIsLoading(true);
     setCanSend(false);
     setTimeout(() => {
       setIsLoading(false);
+      setOutputlink("http://google.com");
     }, 2000);
   }, []);
 
@@ -158,10 +161,15 @@ const Index: FunctionComponent = () => {
     className="flex shadow-lg flex-col text-gray-200
     bg-gray-900 pt-1 pl-1 text-lg rounded-lg"
     >
-      {isLoading && createPortal(<div className="absolute inset-0 z-50 flex justify-center items-center">
-      <div className="absolute inset-0 bg-black opacity-75" />
-      <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
-      </div>, document.body)}
+      {createPortal(
+      <div className={`
+      ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"}
+      absolute inset-0 z-50 flex justify-center items-center
+      transition-all duration-300`}>
+        <div className="absolute inset-0 bg-black opacity-75" />
+        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+      </div>
+      , document.body)}
 
       <div className="flex">
 
@@ -204,6 +212,18 @@ const Index: FunctionComponent = () => {
           <div className="bg-gray-800 h-5 rounded-full w-full relative">
             <div className="absolute inset-0 overflow-hidden rounded-full">
               <div className="absolute top-0 right-0 left-0 h-2 bg-gray-900" />
+            </div>
+            <div className="absolute top-0 left-0 right-0 h-64 px-10 overflow-hidden">
+              <div
+              className="w-full pb-5 pt-1 bg-gray-100 text-black text-center
+              transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateY(${outputLink ? 0 : -90}px)`,
+                clipPath: "polygon(0 0, 0 75%, 5% 100%, 10% 75%, 15% 100%, 20% 75%, 25% 100%, 30% 75%, 35% 100%, 40% 75%, 45% 100%, 50% 75%, 55% 100%, 60% 75%, 65% 100%, 70% 75%, 75% 100%, 80% 75%, 85% 100%, 90% 75%, 95% 100%, 100% 75%, 100% 0)"
+              }}
+              >
+                {outputLink}
+              </div>
             </div>
           </div>
         </section>
